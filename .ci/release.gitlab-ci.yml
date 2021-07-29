@@ -12,7 +12,7 @@ dast-tool_zap-basic:
   after_script:
     - mv /zap/wrk/dast-tool_zap_baseline_scan-results.json /builds/shainsingh/hapi-fhir/
   rules:
-    - if: $DAST != "full"
+    - if: $periodic_scan != "nightly"
       when: always
   artifacts:
     paths: [dast-tool_zap_baseline_scan-results.json]
@@ -32,7 +32,7 @@ dast-tool_zap-full:
     - mv /zap/wrk/dast-tool_zap_full_scan-results.json /builds/shainsingh/hapi-fhir/
   rules:
   rules:
-    - if: $DAST == "full"
+    - if: $periodic_scan == "nightly"
       when: always
   artifacts:
     paths: [dast-tool_zap_full_scan-results.json]
